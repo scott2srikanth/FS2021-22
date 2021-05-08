@@ -119,6 +119,16 @@ class MyLinkedList {
 
     public void removeNodeFromIndex(int index){
         //todo
+        if(index==0){
+            removeFirstNode();
+        }
+        else{
+            Node previous = getPreviousNode(index);
+            Node temp = previous.next.next;
+            previous.next.next=null;
+            previous.next = temp;
+            temp=null;
+        }
     }
 
     public void print(){
@@ -149,6 +159,9 @@ public class Main{
         sl.print();
         System.out.println("");
         sl.addNodeAtIndex(4,14);
+        sl.print();
+        System.out.println("");
+        sl.removeNodeFromIndex(2);
         sl.print();
     }
 
