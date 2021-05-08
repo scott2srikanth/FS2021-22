@@ -143,6 +143,27 @@ class MyLinkedList {
             }
         }
     }
+
+    public void reverseList(){
+        if(isEmpty()) return;
+         //h          t
+        // 10 -> 20 ->30
+        //  p    c    temp
+
+        Node previous = head;
+        Node current = head.next;
+        while (current!=null){
+            Node temp = current.next;
+            current.next = previous;
+            previous=current;
+            current = temp;
+            temp = null;
+        }
+
+        tail = head;
+        tail.next = null;
+        head = previous;
+    }
 }
 
 
@@ -162,6 +183,9 @@ public class Main{
         sl.print();
         System.out.println("");
         sl.removeNodeFromIndex(2);
+        sl.print();
+        System.out.println("");
+        sl.reverseList();
         sl.print();
     }
 
