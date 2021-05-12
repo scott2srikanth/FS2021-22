@@ -1,5 +1,4 @@
 package com.app;
-
 class MyLinkedList {
 
     private class Node{
@@ -146,7 +145,7 @@ class MyLinkedList {
 
     public void reverseList(){
         if(isEmpty()) return;
-         //h          t
+        //h          t
         // 10 -> 20 ->30
         //  p    c    temp
 
@@ -190,4 +189,3 @@ public class Main{
     }
 
 }
-
