@@ -164,6 +164,83 @@ class MyLinkedList {
         tail.next = null;
         head = previous;
     }
+
+    public void reverseBetween(int left, int right) {
+
+
+        Node first=head;
+        Node last=head;
+        Node fix=head;
+
+        for(int i=1; i<left; i++){
+            first = first.next;
+        }
+        for(int i=1; i<left-1; i++){
+            fix = fix.next;
+        }
+
+        for(int i=1; i< right; i++){
+            last = last.next;
+        }
+
+        Node previous = first;
+        Node current = first.next;
+        Node temp;
+
+        first.next = last.next;
+
+        if(left != 1){
+            fix.next = last;
+        }
+
+        while(previous != last){
+            temp = current.next;
+            current.next = previous;
+            previous = current;
+            current = temp;
+        }
+
+
+        if(left == 1){
+            head = last;
+        }
+
+    }
+
+    public void sortList() {
+        head = sortList(head);
+    }
+
+    public Node sortList(Node head) {
+        if(head == null || head.next == null) return head;
+        Node slow= head, fast= head, second= null;
+        while(fast.next != null && fast.next.next != null){
+            slow= slow.next;
+            fast= fast.next.next;
+        }
+        second= slow.next;
+        slow.next= null;
+        head= sortList(head);
+        second= sortList(second);
+        return merge(head,second);
+    }
+
+    public Node merge(Node head, Node second){
+        Node curr1= head, curr2= second, sorted= new Node(0,null), curr= sorted;
+        while(curr1 != null && curr2 != null){
+            if(curr1.data < curr2.data){
+                curr.next= curr1;
+                curr1= curr1.next;
+            }else{
+                curr.next= curr2;
+                curr2= curr2.next;
+            }
+            curr= curr.next;
+        }
+        if(curr1 != null) curr.next= curr1;
+        if(curr2 != null) curr.next= curr2;
+        return sorted.next;
+    }
 }
 
 
@@ -186,6 +263,12 @@ public class Main1{
         sl.print();
         System.out.println("");
         sl.reverseList();
+        sl.print();
+        System.out.println("");
+        sl.reverseBetween(2,4);
+        sl.print();
+        System.out.println("");
+        sl.sortList();
         sl.print();
     }
 
