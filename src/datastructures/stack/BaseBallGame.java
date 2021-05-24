@@ -48,7 +48,7 @@ Every integer represented in the list will be between -30000 and 30000.
  */
 public class BaseBallGame {
     public static void main(String[] args) {
-        String input[] = {"5","2","I","D","+"};
+        String input[] = {"5","2","I","+","D"};
         System.out.println(calPoints(input));
     }
 

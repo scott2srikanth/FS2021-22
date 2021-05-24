@@ -17,8 +17,8 @@ Note : use Deque data structure
  */
 public class ReverseKqueue {
     public static void main(String[] args) {
-        int arr[]={10,20,30,40,50};
-        int k = 3;
+        int arr[]={70,20,130,40,50};
+        int k = 4;
 
         Deque<Integer> dq = new ArrayDeque<>();
         Queue<Integer> q = new LinkedList<Integer>();
