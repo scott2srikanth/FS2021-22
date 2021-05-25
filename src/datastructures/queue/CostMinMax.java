@@ -20,7 +20,7 @@ Output:
 public class CostMinMax {
     public static void main(String[] args) {
         int arr[] = {1,2,3,4,5};
-        int K = 2;
+        int K = 3;
         int N =arr.length;
         System.out.println(costMinMax(arr,N,K));
     }
