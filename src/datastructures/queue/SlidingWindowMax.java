@@ -37,22 +37,19 @@ Input: nums = [4,-2], k = 2
 Output: [4]
 
 */
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class SlidingWindowMax {
     public static void main(String[] args) {
         int arr[]={1,3,-1,-3,5,3,6,7};
         int k=3;
-        System.out.println(Arrays.toString(maxSlidingWindow(arr,k)));
+        System.out.println(maxSlidingWindow(arr,k));
     }
 
-    public static int[] maxSlidingWindow(int[] nums, int k) {
+    public static List<Integer> maxSlidingWindow(int[] nums, int k) {
         Deque<Integer> de = new LinkedList();
-        int arr[] = new int[nums.length-k+1];
         ArrayList<Integer> list = new ArrayList();
+
         for(int i=0;i<k;++i){
             while(!de.isEmpty() && nums[i]>=nums[de.peekLast()]){
                 de.removeLast();
@@ -60,8 +57,13 @@ public class SlidingWindowMax {
             de.addLast(i);
         }
 
+        de.forEach(a-> System.out.print(a+" "));
+        System.out.println("");
+
         for(int i=k;i<nums.length;++i){
+            System.out.println(de);
             list.add(nums[de.peek()]);
+            System.out.println(list);
             while(!de.isEmpty() && de.peek()<=i-k){
                 de.removeFirst();
             }
@@ -69,13 +71,17 @@ public class SlidingWindowMax {
                 de.removeLast();
             }
             de.addLast(i);
+        }
 
-        }
+        de.forEach(a-> System.out.print(a+" "));
+        System.out.println("");
+
         list.add(nums[de.peek()]);
-        for(int j=0;j<list.size();j++){
-            arr[j]=list.get(j);
-        }
-        return arr;
+
+        list.forEach(a-> System.out.print(a+" "));
+        System.out.println("");
+
+        return list;
     }
 
 }

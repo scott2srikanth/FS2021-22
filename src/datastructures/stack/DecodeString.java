@@ -41,7 +41,7 @@ All the integers in s are in the range [1, 300].
 */
 public class DecodeString {
     public static void main(String[] args) {
-        String s = "2[abc]3[cd]ef";
+        String s = "3[ab]";
         System.out.println(decodeString(s));
     }
     public static String decodeString(String s) {
@@ -65,6 +65,7 @@ public class DecodeString {
                 st.push("[");
                 num = 0;
             }
+            System.out.println(st);
             if(Character.isLetter(c)){
                 res.append(Character.toString(c));
             }
